@@ -214,7 +214,13 @@ public class WriteMultipleCoilsRequest extends ModbusRequest {
      * @param bv a <tt>BitVector</tt> instance holding coil status info.
      */
     public void setCoils(BitVector bv) {
-        coils = bv;
+        if(bv == null) {
+             setDataLength(5);
+             coils = null;
+        } else {
+             setDataLength(bv.byteSize() + 5);
+             coils = bv;
+        }
     }
 
     @Override
