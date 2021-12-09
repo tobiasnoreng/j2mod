@@ -54,7 +54,7 @@ public class TestModbusSerialASCIIMasterRead extends AbstractTestModbusSerialASC
     @Test
     public void testReadInvalidCoil() {
         try {
-            master.readCoils(UNIT_ID, 3, 1);
+            master.readCoils(UNIT_ID, 25, 1);
             fail("Invalid address not thrown");
         }
         catch (ModbusSlaveException e) {

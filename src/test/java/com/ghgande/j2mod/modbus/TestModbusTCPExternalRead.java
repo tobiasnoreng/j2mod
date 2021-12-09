@@ -39,7 +39,7 @@ public class TestModbusTCPExternalRead extends AbstractTestModbusTCPSlave {
 
     @Test
     public void testSlaveReadInvalidCoil() {
-        assertTrue("Failed check for missing coil 3", readModPoll(3, 0, "Illegal Data Address exception response"));
+        assertTrue("Failed check for missing coil 25", readModPoll(25, 0, "Illegal Data Address exception response"));
     }
 
     @Test

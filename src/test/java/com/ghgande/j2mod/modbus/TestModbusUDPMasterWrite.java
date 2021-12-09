@@ -15,9 +15,13 @@
  */
 package com.ghgande.j2mod.modbus;
 
+import com.ghgande.j2mod.modbus.procimg.DigitalOut;
 import com.ghgande.j2mod.modbus.procimg.Register;
+import com.ghgande.j2mod.modbus.procimg.SimpleDigitalOut;
 import com.ghgande.j2mod.modbus.procimg.SimpleInputRegister;
+import com.ghgande.j2mod.modbus.procimg.SimpleProcessImage;
 import com.ghgande.j2mod.modbus.procimg.SimpleRegister;
+import com.ghgande.j2mod.modbus.util.BitVector;
 import com.ghgande.j2mod.modbus.utils.AbstractTestModbusUDPMaster;
 import org.junit.Test;
 
@@ -40,6 +44,48 @@ public class TestModbusUDPMasterWrite extends AbstractTestModbusUDPMaster {
         catch (Exception e) {
             fail(String.format("Cannot write to coil 1 - %s", e.getMessage()));
         }
+    }
+    
+    @Test
+    public void testWriteMultipleCoils() {
+    	try {
+    		
+    		byte[] data = {0b00000000, (byte) 0b11111111, 0b01010101};
+    		BitVector bv = BitVector.createBitVector(data);
+    		master.writeMultipleCoils(UNIT_ID, 0, bv);
+    		
+    		DigitalOut[] slaveCoils = slave.getProcessImage(UNIT_ID).getDigitalOutRange(0, 24);
+    		
+    		assertEquals("Bit 0 of byte 0 is wrong", false, slaveCoils[0].isSet());
+    		assertEquals("Bit 1 of byte 0 is wrong", false, slaveCoils[1].isSet());
+    		assertEquals("Bit 2 of byte 0 is wrong", false, slaveCoils[2].isSet());
+    		assertEquals("Bit 3 of byte 0 is wrong", false, slaveCoils[3].isSet());
+    		assertEquals("Bit 4 of byte 0 is wrong", false, slaveCoils[4].isSet());
+    		assertEquals("Bit 5 of byte 0 is wrong", false, slaveCoils[5].isSet());
+    		assertEquals("Bit 6 of byte 0 is wrong", false, slaveCoils[6].isSet());
+    		assertEquals("Bit 7 of byte 0 is wrong", false, slaveCoils[7].isSet());
+
+    		assertEquals("Bit 0 of byte 1 is wrong", true, slaveCoils[8].isSet());
+    		assertEquals("Bit 1 of byte 1 is wrong", true, slaveCoils[9].isSet());
+    		assertEquals("Bit 2 of byte 1 is wrong", true, slaveCoils[10].isSet());
+    		assertEquals("Bit 3 of byte 1 is wrong", true, slaveCoils[11].isSet());
+    		assertEquals("Bit 4 of byte 1 is wrong", true, slaveCoils[12].isSet());
+    		assertEquals("Bit 5 of byte 1 is wrong", true, slaveCoils[13].isSet());
+    		assertEquals("Bit 6 of byte 1 is wrong", true, slaveCoils[14].isSet());
+    		assertEquals("Bit 7 of byte 1 is wrong", true, slaveCoils[15].isSet());
+
+    		assertEquals("Bit 0 of byte 2 is wrong", true, slaveCoils[16].isSet());
+    		assertEquals("Bit 1 of byte 2 is wrong", false, slaveCoils[17].isSet());
+    		assertEquals("Bit 2 of byte 2 is wrong", true, slaveCoils[18].isSet());
+    		assertEquals("Bit 3 of byte 2 is wrong", false, slaveCoils[19].isSet());
+    		assertEquals("Bit 4 of byte 2 is wrong", true, slaveCoils[20].isSet());
+    		assertEquals("Bit 5 of byte 2 is wrong", false, slaveCoils[21].isSet());
+    		assertEquals("Bit 6 of byte 2 is wrong", true, slaveCoils[22].isSet());
+    		assertEquals("Bit 7 of byte 2 is wrong", false, slaveCoils[23].isSet());
+    	}
+    	catch(Exception e) {    		
+    		fail(String.format("Cannot write to coil 1 - %s", e.getMessage()));
+    	}
     }
 
     @Test

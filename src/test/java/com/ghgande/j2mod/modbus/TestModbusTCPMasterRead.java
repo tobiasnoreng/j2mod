@@ -46,7 +46,7 @@ public class TestModbusTCPMasterRead extends AbstractTestModbusTCPMaster {
     @Test
     public void testReadInvalidCoil() {
         try {
-            master.readCoils(UNIT_ID, 3, 1);
+            master.readCoils(UNIT_ID, 24, 1);
             fail("Invalid address not thrown");
         }
         catch (ModbusSlaveException e) {

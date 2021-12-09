@@ -53,6 +53,30 @@ public class AbstractTestModbus {
         // Create some coils
         spi.addDigitalOut(new SimpleDigitalOut(true));
         spi.addDigitalOut(new SimpleDigitalOut(false));
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
+        
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
+        
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
+        spi.addDigitalOut(new SimpleDigitalOut(true));
+        spi.addDigitalOut(new SimpleDigitalOut(false));
 
         spi.addDigitalOut(50000, new SimpleDigitalOut(false));
         spi.addDigitalOut(50001, new SimpleDigitalOut(true));

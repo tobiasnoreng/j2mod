@@ -40,7 +40,7 @@ public class TestModbusTCPRead extends AbstractTestModbusTCPMaster {
 
     @Test
     public void testReadInvalidCoil() {
-        assertNull("Failed check for missing coil 3", readRequest(Modbus.READ_COILS, 3, 1));
+        assertNull("Failed check for missing coil 24", readRequest(Modbus.READ_COILS, 24, 1));
     }
 
     @Test
